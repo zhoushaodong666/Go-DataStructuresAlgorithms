@@ -160,7 +160,7 @@ func (this *LinkList) DeleteTail() bool {
 	return true
 }
 
-//通过索引查找节点
+//通过索引查找节点 索引从0开始
 func (this *LinkList) FindByIndex(index uint) *ListNode {
 	//空链或索引超过链表长度就返回nil
 	if this.IsEmpty() || index >= this.length {

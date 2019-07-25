@@ -50,7 +50,7 @@
    ![avatar](/01-linklist/images/2.png)
    将节点4的值赋值给节点3
    
-   ![avatar](/01-linklist/images/4.png)
+   ![avatar](/01-linklist/images/4.jpg)
    
    ![avatar](/01-linklist/images/5.jpg)
    

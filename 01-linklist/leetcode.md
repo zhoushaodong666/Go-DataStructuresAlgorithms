@@ -63,12 +63,8 @@
    步骤4：
    
    ![avatar](/01-linklist/images/6.jpg)
-   
+    
    步骤5：
-   
-   ![avatar](/01-linklist/images/7.jpg)
-   
-   步骤6：
    
    ![avatar](/01-linklist/images/8.jpg)
    

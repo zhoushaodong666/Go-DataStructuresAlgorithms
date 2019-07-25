@@ -53,7 +53,6 @@
    
    步骤2：
    
-   
    ![avatar](/01-linklist/images/4.jpg)
    
    步骤3：

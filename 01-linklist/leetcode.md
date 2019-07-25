@@ -49,7 +49,8 @@
    
    ![avatar](/01-linklist/images/2.png)
    
-   ![avatar](/01-linklist/images/4.jpg)
+   
+   ![avatar](/01-linklist/images/5.jpg)
    
    
 

@@ -48,11 +48,21 @@
    举例：假如我要删除节点4
   
    ![avatar](/01-linklist/images/2.png)
-   将节点4的值赋值给节点3
    
    ![avatar](/01-linklist/images/4.jpg)
    
    ![avatar](/01-linklist/images/5.jpg)
+   
+   ![avatar](/01-linklist/images/6.jpg)
+   
+   ![avatar](/01-linklist/images/7.jpg)
+   
+   ![avatar](/01-linklist/images/8.jpg)
+   
+   因为```链表至少包含两个节点```、```链表中所有节点的值都是唯一的```、```给定的节点为非末尾节点并且一定是链表中的一个有效节点```。
+   所以我们这种思路是可行的。
+   
+   
    
    
 

@@ -45,8 +45,9 @@
    
    我们可以通过下一个节点的值赋值给需要删除的节点，再把next指向下下个节点，达到删除的效果。
    
-   ![avatar](/01-linklist/images/2.png)
+   举例：假如我要删除节点4
    
+   ![avatar](/01-linklist/images/2.png)
    
    ![avatar](/01-linklist/images/4.jpg)
    

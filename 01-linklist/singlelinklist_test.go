@@ -45,7 +45,6 @@ func TestDeleteHead(t *testing.T) {
 	for j := 0; j < 10; j++ {
 		l.DeleteHead()
 		l.Print()
-		t.Log("节点数：", l.length)
 	}
 }
 
@@ -61,7 +60,6 @@ func TestDeleteTail(t *testing.T) {
 	for j := 0; j < 10; j++ {
 		l.DeleteTail()
 		l.Print()
-		t.Log("节点数：", l.length)
 	}
 }
 
@@ -90,7 +88,6 @@ func TestDeleteNode(t *testing.T) {
 
 	t.Log(l.DeleteNode(l.head.next.next))
 	l.Print()
-
 }
 
 func TestReverseLinkList(t *testing.T) {
@@ -102,5 +99,4 @@ func TestReverseLinkList(t *testing.T) {
 	l.Print()
 	l.ReverseLinkList()
 	l.Print()
-
 }

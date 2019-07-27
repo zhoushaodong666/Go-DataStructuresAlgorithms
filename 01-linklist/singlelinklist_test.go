@@ -33,6 +33,20 @@ func TestInsertToTail(t *testing.T) {
 	t.Log("linklist length = ", l.length)
 }
 
+func TestInsertToBefore(t *testing.T) {
+	l := InitLinkList()
+	for i := 0; i < 10; i++ {
+		l.InsertToTail(i + 1)
+	}
+	l.Print()
+	node0 := l.FindByIndex(0)
+	node1 := l.FindByIndex(9)
+	l.InsertToBefore(node0, 11)
+	l.InsertToBefore(node1, 12)
+	l.Print()
+
+}
+
 func TestDeleteHead(t *testing.T) {
 	l := InitLinkList()
 	for i := 0; i < 10; i++ {

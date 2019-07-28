@@ -174,20 +174,6 @@ func (this *LinkList) FindByIndex(index uint) *ListNode {
 	return cur
 }
 
-//反转单链表
-
-func (this *LinkList) ReverseLinkList() {
-	var pre *ListNode = nil
-	cur := this.head.next
-	for nil != cur {
-		tempNextNode := cur.next
-		cur.next = pre
-		pre = cur
-		cur = tempNextNode
-	}
-	this.head.next = pre
-}
-
 //打印链表
 func (this *LinkList) Print() {
 	cur := this.head.next

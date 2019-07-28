@@ -121,55 +121,38 @@ func (this *DLinkList) InsertToBefore(p *DListNode, v interface{}) (bool, error)
 	return true, nil
 }
 
-//删除传入的节点
+//删除传入的节点 双向链表可以很方便的通过pre域找到前驱 所以不需要遍历
 func (this *DLinkList) DeleteNode(p *DListNode) bool {
-	if nil == p {
+	if nil == p || this.IsEmpty() {
 		return false
 	}
-	cur := this.head.next
-	pre := this.head
-	for nil != cur {
-		//找到需要删除的节点，跳出循环
-		if cur == p {
-			break
-		}
-		pre = cur
-		cur = cur.next
+	//前驱节点
+	pre := p.pre
+	//后继节点
+	next := p.next
+	//有后继节点时和前驱节点建立联系
+	if p.next != nil {
+		next.pre = pre
 	}
-	//循环结束还未找到传入的节点
-	if nil == cur {
-		return false
-	}
-	pre.next = p.next
-	p = nil
+	//前驱和后继节点建立联系
+	pre.next = next
+
 	this.length--
 	return true
 }
 
 //删除头部节点
 func (this *DLinkList) DeleteHead() bool {
-	//链表为空
-	if this.IsEmpty() {
-		return true
-	}
 	return this.DeleteNode(this.head.next)
 }
 
 //删除尾部节点
 func (this *DLinkList) DeleteTail() bool {
-	if this.IsEmpty() {
-		return true
-	}
-
-	pre := this.head
 	cur := this.head.next
 	for nil != cur.next {
-		pre = cur
 		cur = cur.next
 	}
-	pre.next = nil
-	this.length--
-	return true
+	return this.DeleteNode(cur)
 }
 
 //通过索引查找节点 索引从0开始
@@ -184,20 +167,6 @@ func (this *DLinkList) FindByIndex(index uint) *DListNode {
 		cur = cur.next
 	}
 	return cur
-}
-
-//反转单链表
-
-func (this *DLinkList) ReverseLinkList() {
-	var pre *DListNode = nil
-	cur := this.head.next
-	for nil != cur {
-		tempNextNode := cur.next
-		cur.next = pre
-		pre = cur
-		cur = tempNextNode
-	}
-	this.head.next = pre
 }
 
 //打印链表

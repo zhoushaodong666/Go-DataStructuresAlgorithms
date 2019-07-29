@@ -103,14 +103,3 @@ func TestDeleteNode(t *testing.T) {
 	t.Log(l.DeleteNode(l.head.next.next))
 	l.Print()
 }
-
-func TestReverseLinkList(t *testing.T) {
-	l := InitLinkList()
-	for i := 0; i < 5; i++ {
-		l.InsertToTail(i + 1)
-	}
-
-	l.Print()
-	l.ReverseLinkList()
-	l.Print()
-}

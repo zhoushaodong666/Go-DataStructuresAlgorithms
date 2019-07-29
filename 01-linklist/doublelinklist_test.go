@@ -72,3 +72,15 @@ func TestDLinkList_FindByIndex(t *testing.T) {
 	node4 := l.FindByIndex(11)
 	fmt.Println(node0, node1, node2, node3, node4)
 }
+
+func TestDLinkList_InsertToBefore(t *testing.T) {
+	l := InitDLinkList()
+	for i := 0; i < 5; i++ {
+		l.InsertToTail(i + 1)
+	}
+	l.Print()
+	l.InsertToBefore(l.head.next, 6)
+	l.InsertToBefore(l.head.next, 7)
+
+	l.Print()
+}

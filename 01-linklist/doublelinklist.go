@@ -98,25 +98,13 @@ func (this *DLinkList) InsertToBefore(p *DListNode, v interface{}) (bool, error)
 	if nil == p || p == this.head {
 		return false, errors.New("p node is nil or is head node")
 	}
-	//第一个有效节点
-	cur := this.head.next
-	//虚拟头结点
-	pre := this.head
-	for nil != cur {
-		//找到指定的节点 跳出循环
-		if cur == p {
-			break
-		}
-		pre = cur
-		cur = cur.next
-	}
-	//循环结束还没有找到指定的节点
-	if nil == cur {
-		return false, errors.New("p node is not in linklist")
-	}
+
 	newNode := NewDListNode(v)
+	pre := p.pre
+	newNode.next = p
+	p.pre = newNode
+	newNode.pre = pre
 	pre.next = newNode
-	newNode.next = cur
 	this.length++
 	return true, nil
 }
@@ -180,6 +168,7 @@ func (this *DLinkList) Print() {
 			format += "->"
 		}
 	}
+
 	if format != "" {
 		format += "->nil"
 	} else {

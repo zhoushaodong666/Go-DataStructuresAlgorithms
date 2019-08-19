@@ -16,7 +16,6 @@ type SliceStack struct {
 	data []interface{}
 	//栈顶指针索引
 	top int
-	Stack
 }
 
 //初始化顺序栈

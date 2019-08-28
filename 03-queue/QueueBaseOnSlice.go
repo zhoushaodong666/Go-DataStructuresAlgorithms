@@ -75,9 +75,8 @@ func (this *SliceQueue) Print() {
 		return
 	}
 	fmt.Print("队头")
-	for i := this.front; i != this.rear; {
+	for i := this.front; i != this.rear; i++ {
 		fmt.Print(this.data[i], " ")
-		i = (i + 1) % this.cap
 	}
 	fmt.Print("队尾")
 	fmt.Println()

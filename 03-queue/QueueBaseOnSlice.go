@@ -3,7 +3,7 @@ package _3_queue
 import "fmt"
 
 // 定义顺序循环队列结构体
-type SeqSliceQueue struct {
+type SliceQueue struct {
 	// 数据集
 	data []interface{}
 	// 队头指针
@@ -15,50 +15,47 @@ type SeqSliceQueue struct {
 }
 
 // 初始化循环队列 传入n为 队列长度
-func InitSeqSliceQueue(size int) *SeqSliceQueue {
-	return &SeqSliceQueue{make([]interface{}, size), 0, 0, size}
+func InitSeqSliceQueue(size int) *SliceQueue {
+	return &SliceQueue{make([]interface{}, size), 0, 0, size}
 }
 
 // 队列是否为空
-func (this *SeqSliceQueue) IsEmpty() bool {
-	if this.front == this.rear {
-		return true
-	}
-	return false
+func (this *SliceQueue) IsEmpty() bool {
+	return this.front == this.rear
 }
 
 // 队列是否已满
-func (this *SeqSliceQueue) IsFull() bool {
-	return (this.rear+1)%this.cap == this.front
+func (this *SliceQueue) IsFull() bool {
+	return this.rear == this.cap
 }
 
 // 入队
-func (this *SeqSliceQueue) EnQueue(v interface{}) bool {
+func (this *SliceQueue) EnQueue(v interface{}) bool {
 	if this.IsFull() {
 		return false
 	}
 	this.data[this.rear] = v
-	this.rear = (this.rear + 1) % this.cap
+	this.rear++
 	return true
 }
 
 // 出队
-func (this *SeqSliceQueue) DeQueue() interface{} {
+func (this *SliceQueue) DeQueue() interface{} {
 	if this.IsEmpty() {
 		return nil
 	}
 	v := this.data[this.front]
-	this.front = (this.front + 1) % this.cap
+	this.front++
 	return v
 }
 
 // 返回队列内元素个数
-func (this *SeqSliceQueue) Length() int {
-	return (this.rear - this.front + this.cap) % this.cap
+func (this *SliceQueue) Length() int {
+	return this.rear - this.front
 }
 
 // 返回队列首个元素
-func (this *SeqSliceQueue) Front() interface{} {
+func (this *SliceQueue) Front() interface{} {
 	if this.IsEmpty() {
 		return nil
 	}
@@ -67,12 +64,12 @@ func (this *SeqSliceQueue) Front() interface{} {
 }
 
 // 清空队列
-func (this *SeqSliceQueue) Flush() {
+func (this *SliceQueue) Flush() {
 	this.front = 0
 	this.rear = 0
 }
 
-func (this *SeqSliceQueue) Print() {
+func (this *SliceQueue) Print() {
 	if this.IsEmpty() {
 		fmt.Println("empty queue")
 		return

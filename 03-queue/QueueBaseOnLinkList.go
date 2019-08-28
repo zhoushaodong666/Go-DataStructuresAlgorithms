@@ -1,5 +1,7 @@
 package _3_queue
 
+import "fmt"
+
 // 定义链表节点
 type Node struct {
 	data interface{}
@@ -8,16 +10,14 @@ type Node struct {
 
 // 定义链表队列结构体
 type LinkListQueue struct {
-	head   *Node
+	front  *Node
+	rear   *Node
 	length uint
 }
 
 // 初始化链表队列
 func InitLinkListQueue() *LinkListQueue {
-	return &LinkListQueue{
-		head:   &Node{nil, nil},
-		length: 0,
-	}
+	return &LinkListQueue{nil, nil, 0}
 }
 
 // 判断循环链表队列是否为空
@@ -26,36 +26,50 @@ func (this *LinkListQueue) IsEmpty() bool {
 }
 
 // 入列
-func (this *LinkListQueue) EnQueue(v interface{}) bool {
-	cur := this.head
-	for cur.next != nil {
-		cur = cur.next
+func (this *LinkListQueue) EnQueue(v interface{}) {
+	node := &Node{v, nil}
+	if this.rear == nil {
+		this.front = node
+	} else {
+		this.rear.next = node
 	}
-	newNode := &Node{v, nil}
-	cur.next = newNode
+	this.rear = node
 	this.length++
-	return true
 }
 
-func (this *LinkListQueue) DeQueue(v interface{}) (interface{}, error) {
+func (this *LinkListQueue) DeQueue() interface{} {
 	if this.IsEmpty() {
-		return nil, nil
+		return nil
+	}
+	v := this.front.data
+	this.front = this.front.next
+	this.length--
+	return v
+}
+
+// 返回队头元素
+func (this *LinkListQueue) Front() interface{} {
+	return this.front.data
+}
+
+// 清空链表
+func (this *LinkListQueue) Flush() {
+	this.front = nil
+	this.rear = nil
+	this.length = 0
+}
+
+// 打印队列
+func (this *LinkListQueue) Print() {
+	if this.IsEmpty() {
+		fmt.Println("empty queue")
+		return
 	}
 
-	// 虚拟头节点
-	var pre *Node = nil
-	// 第一个有效节点
-	cur := this.head.next
-
-	for cur != nil {
-		pre = cur
-		cur = cur.next
+	formateStr := ""
+	cur := this.front
+	for ; cur != nil; cur = cur.next {
+		formateStr += fmt.Sprintf("<-%+v", cur.data)
 	}
-
-	if pre != nil {
-		this.head = cur
-		this.length--
-		return nil, nil
-	}
-	return nil, nil
+	fmt.Print(formateStr)
 }

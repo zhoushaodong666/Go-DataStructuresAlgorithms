@@ -49,6 +49,9 @@ func (this *LinkListQueue) DeQueue() interface{} {
 
 // 返回队头元素
 func (this *LinkListQueue) Front() interface{} {
+	if this.IsEmpty() {
+		return nil
+	}
 	return this.front.data
 }
 
@@ -66,10 +69,11 @@ func (this *LinkListQueue) Print() {
 		return
 	}
 
-	formateStr := ""
+	formateStr := "head"
 	cur := this.front
 	for ; cur != nil; cur = cur.next {
 		formateStr += fmt.Sprintf("<-%+v", cur.data)
 	}
+	formateStr += "<-tail\n"
 	fmt.Print(formateStr)
 }
